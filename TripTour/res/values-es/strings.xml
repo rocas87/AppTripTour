@@ -5,8 +5,8 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="login">Acceder</string>
-    <string name="userLog">Usuario o nick:</string>
-    <string name="pass">Contrseña:</string>
+    <string name="userLog">E-Mail o Nick:</string>
+    <string name="pass">Contraseña:</string>
     <string name="newUser">Nuevo usuario registrar!!</string>
     <string name="find">Buscar atractivos</string>
     <string name="recomendation">Recomendacion atractivos</string>
@@ -47,7 +47,7 @@
     <string name="resultsFind">Atractivos obtenidos:</string>
     <string name="register">Registrar</string>
     <string name="logonSkip">Saltar inicio sesion</string>
-    <string name="inicio">¡Bienvenido¡</string>
+    <string name="inicio">¡Bienvenido!</string>
     <string name="post">Comentarios</string>
 
 </resources>

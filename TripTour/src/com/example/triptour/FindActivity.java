@@ -55,7 +55,7 @@ public class FindActivity extends Activity implements android.location.LocationL
 	ArrayList<String> latitude = new ArrayList<String>();
 	ArrayList<String> longitude = new ArrayList<String>();
 	String usuario, latitud, longitud, categoria, radioBusqueda, mode, php, res, itm_nombre, itm_direccion,
-				    itm_promedio, itm_distancia, itm_latitude, itm_longitude, medioTransporte, hora, latLong, minuto, dist;
+				    itm_promedio, itm_distancia, itm_latitude, itm_longitude, medioTransporte, hora, latLong, minuto, dist, mov;
 	int categoriaFind, transporteFind, categoriaRecomendation, transporteRecomendation, transporteRoute;
 	Location loc;
 	LocationClient mLocationClient;
@@ -94,18 +94,18 @@ public class FindActivity extends Activity implements android.location.LocationL
 			
 			//Categorias disponibles
 			categorias.add("Bar");
-			categorias.add("Zoologico");
-			categorias.add("Museo");
-			categorias.add("Parques");
-			categorias.add("Parque de diversiones");
-			categorias.add("Deportes");
+			categorias.add("Zoologico/Zoo");
+			categorias.add("Museo/Museum");
+			categorias.add("Parques/Park");
+			categorias.add("Parque de Diversiones/Amusement Park");
+			categorias.add("Deportes/Sports");
 			categorias.add("Restaurant");
-			categorias.add("Senderismo");
-			categorias.add("Artesania");
-			categorias.add("Patrimonio");
+			categorias.add("Senderismo/Hiking");
+			categorias.add("Artesania/Crafts");
+			categorias.add("Patrimonios Nacionales/National Treasures");
 			//Tipos de transporte
-			transporte.add("Driving/Automovil");
-			transporte.add("Walking/Caminando");
+			transporte.add("Conduciendo/To driving");
+			transporte.add("Caminando/To walking");
 			
 			Bundle find = getIntent().getExtras();
 			usuario = find.getString("user");
@@ -118,11 +118,13 @@ public class FindActivity extends Activity implements android.location.LocationL
 			{
 				mode = "driving";
 				radioBusqueda = "20";
+				mov = "Conduciendo/To driving";
 			}
 			else if(medioTransporte.equals("2"))
 			{
 				mode = "walking";
 				radioBusqueda = "5";
+				mov = "Caminando/To walking";
 			}
 			
 						
@@ -169,7 +171,7 @@ public class FindActivity extends Activity implements android.location.LocationL
 												 Vibrator vibrator =(Vibrator)getSystemService
 														 (Context.VIBRATOR_SERVICE);
 												 vibrator.vibrate(200);
-												 Toast.makeText(FindActivity.this,"No se encontraron" +
+												 Toast.makeText(FindActivity.this,"No se encontraron " +
 												 		"resultados para esta categoria",
 												 		Toast.LENGTH_LONG).show();
 												 pDialog.dismiss();
@@ -189,7 +191,7 @@ public class FindActivity extends Activity implements android.location.LocationL
 												 Vibrator vibrator =(Vibrator)getSystemService
 														 (Context.VIBRATOR_SERVICE);
 												 vibrator.vibrate(200);
-												 Toast.makeText(FindActivity.this,"No se encontraron" +
+												 Toast.makeText(FindActivity.this,"No se encontraron " +
 												 		"resultados dentro del radio de busqueda",
 												 		Toast.LENGTH_LONG).show();
 												 pDialog.dismiss();
@@ -607,7 +609,7 @@ public class FindActivity extends Activity implements android.location.LocationL
 			mapActivity.putExtra("itm_distancia", itm_distancia);
 			mapActivity.putExtra("itm_latitud", itm_latitude);
 			mapActivity.putExtra("itm_longitud", itm_longitude);
-			mapActivity.putExtra("rta_mode", mode);
+			mapActivity.putExtra("rta_mode", mov);
 			mapActivity.putExtra("radioBusqueda", radioBusqueda);
 			mapActivity.putExtra("user", usuario);
 			startActivity(mapActivity);
@@ -669,7 +671,7 @@ public class FindActivity extends Activity implements android.location.LocationL
 			mapActivity.putExtra("itm_distancia", distancia);
 			mapActivity.putExtra("itm_latitud", latitude);
 			mapActivity.putExtra("itm_longitud", longitude);
-			mapActivity.putExtra("rta_mode", mode);
+			mapActivity.putExtra("rta_mode", mov);
 			mapActivity.putExtra("radioBusqueda", radioBusqueda);
 			startActivity(mapActivity);
 		}

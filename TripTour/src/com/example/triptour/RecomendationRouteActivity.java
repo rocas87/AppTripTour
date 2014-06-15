@@ -57,7 +57,7 @@ public class RecomendationRouteActivity extends Activity implements android.loca
 	ArrayList<String> disItem = new ArrayList<String>();
 	ArrayList<String> promRuta = new ArrayList<String>();
 	String usuario, latitud, longitud, php, res, itm_nombre, itm_direccion, itm_promedio, itm_distancia, 
-		   itm_latitude, itm_longitude, mode, medioTransporte, tiempoRecorrido, distMaxima, dia, hora, minuto, latLong, prom;
+		   itm_latitude, itm_longitude, mode, medioTransporte, tiempoRecorrido, distMaxima, dia, hora, minuto, latLong, prom, mov;
 	int categoriaFind, transporteFind, categoriaRecomendation, transporteRecomendation, transporteRoute;
 	Location loc;
 	LocationClient mLocationClient;
@@ -92,18 +92,18 @@ public class RecomendationRouteActivity extends Activity implements android.loca
 			
 			//Categorias disponibles
 			categorias.add("Bar");
-			categorias.add("Zoologico");
-			categorias.add("Museo");
-			categorias.add("Parques");
-			categorias.add("Parque de diversiones");
-			categorias.add("Deportes");
+			categorias.add("Zoologico/Zoo");
+			categorias.add("Museo/Museum");
+			categorias.add("Parques/Park");
+			categorias.add("Parque de Diversiones/Amusement Park");
+			categorias.add("Deportes/Sports");
 			categorias.add("Restaurant");
-			categorias.add("Senderismo");
-			categorias.add("Artesania");
-			categorias.add("Patrimonio");
+			categorias.add("Senderismo/Hiking");
+			categorias.add("Artesania/Crafts");
+			categorias.add("Patrimonios Nacionales/National Treasures");
 			//Tipos de transporte
-			transporte.add("Driving/Automovil");
-			transporte.add("Walking/Caminando");
+			transporte.add("Conduciendo/To driving");
+			transporte.add("Caminando/To walking");
 			
 			Bundle recomendationRoute = getIntent().getExtras();
 			usuario = recomendationRoute.getString("user");
@@ -117,11 +117,13 @@ public class RecomendationRouteActivity extends Activity implements android.loca
 			{
 				mode = "driving";
 				distMaxima = "50";
+				mov = "Conduciendo/To Driving";
 			}
 			else if(medioTransporte.equals("2"))
 			{
 				mode = "walking";
 				distMaxima = "10";
+				mov = "Caminando/ To walking";
 			}
 			
 			dia = "0";
@@ -606,7 +608,7 @@ public class RecomendationRouteActivity extends Activity implements android.loca
 			mapActivity.putExtra("rta_distancia", rta_distancia);
 			mapActivity.putExtra("rta_duracion", rta_duracion);
 			mapActivity.putExtra("rta_coordenadas", rta_coordenadas);
-			mapActivity.putExtra("rta_mode", mode);
+			mapActivity.putExtra("rta_mode", mov);
 			mapActivity.putExtra("distMaxima", distMaxima);
 			mapActivity.putExtra("promedio_itm", promedio_itm);
 			mapActivity.putExtra("direcciones", direcciones);
